@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" " http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd ">
+<html xmlns=" http://www.w3.org/1999/xhtml ">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Galaxy Tab event payload test">
+<title>Galaxy Tab event payload test</title> 
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script>
+$(document).ready(function()
+{ 
+  var  payload ;	  	  
+  // USE DELEGATION->$("#wrapperDiv").on("click" , "#countriesTable tr" ,  function(e) {
+  // ok, try inefficient approach w/listener on every row:	  
+  // $("tr").on("click" ,  function(e) {	  
+  $("tr").click(  function(e) {			
+  	  var  payload = e.currentTarget.outerText ;
+	  // for Firefox/Mozilla, which doesn't support outerText prop
+	  if (payload===undefined) {
+		 payload = e.currentTarget.textContent ;  
+	  }
+	  // display the event data payload	
+	  $("#testText").text( payload ) ; 
+	});
+}) ; 		
+</script>
+</head>
+<body style="width:100%">
+  
+<h2>Test for Galaxy Tab 10.1 (v1) stock browser</h2>
+<h3>Tablet is the original GTab 10.1 GT-P7510 running Android 4.0.4</h3>
+  
+<p>This verifies that there's a problem with the Galaxy Tab 10.1 click event payload on a table row.
+     If you scroll down and select a row you don't get that row as the click event payload. Instead
+      the row you get is a relative offset row from top of table &#8212; that is, your event.currentTarget will be for the table row corresponding to the visible offset of the row you actually selected (yes, it's confusing). Try again: if you scroll down and pick the Nth visible row you will not get an event payload for that row, you'll get the data for table row N.  So, in the example below, scroll down so that row 7 is visible, make it the 5th row from the top, then select it &#8212; you won't get the data for row 7, you'll get the data for table row 5 -- i.e., the 5th row from the top of table.   </p>
+     
+<p>Note that this isn't a generalized GTab problem, Chrome works fine (in fact so far this problem has not surfaced in any  
+     other device/OS/browser combination, including iPad Safari and iPad Chrome)
+</p> 
+  
+<p>For tablet here's quick way to <a href="javascript: alert(document.getElementsByTagName('html')[0].innerHTML);">view source code</a> of this example.</p>
+   
+<p id="testText" style="border:double;border-color:blue">This is where event currentTarget row text (outerText) will display when you select a row</p> 
+   
+  <div id="wrapperDiv"  style="height:150px;width:200px;overflow:scroll">
+    <table id="countriesTable"  border="1">
+        <tr>
+           <td>1st</td>
+           <td>ABC</td>
+           <td>zzzzzzzz</td>	
+        </tr>
+        <tr>
+           <td>2nd</td>
+           <td>DEF</td>
+           <td>xxxxxx</td>	
+        </tr>
+        <tr>
+           <td>3rd</td>
+           <td>GHI</td>
+           <td>ccccccc</td>	
+        </tr>        
+        <tr>
+           <td>4th</td>
+           <td>JKL</td>
+           <td>vvvvvvv</td>	
+        </tr>
+        <tr>
+           <td>5th</td>
+           <td>MNO</td>
+           <td>bbbbbb</td>	
+        </tr>
+        <tr>
+           <td>6th</td>
+           <td>PQR</td>
+           <td>nnnnnn</td>	
+        </tr>       
+        <tr>
+           <td>7th</td>
+           <td>STU</td>
+           <td>mmmmm</td>	
+        </tr>       
+        <tr>
+           <td>8th</td>
+           <td>VWX</td>
+           <td>aaaaa</td>	
+        </tr>         
+        <tr>
+           <td>9th</td>
+           <td>YZ</td>
+           <td>sssssss</td>	
+        </tr>       
+    </table>  
+  </div>
+  <br/><br/>
+</body>
+</html> 
