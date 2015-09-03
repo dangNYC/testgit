@@ -11,7 +11,9 @@ sub1 body text
 
 bullet lead-in text:
 * bullet 1
+* bullet 2
 * bullet 3
+* bullet 4
 
 change of text 
 another add 
