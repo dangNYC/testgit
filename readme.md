@@ -1,4 +1,4 @@
-## Test markdown main title (level 2 text here)
+## Test markdown main title (level 2 text)
 
 > indented text - to summarize content
 
@@ -11,11 +11,10 @@ sub1 body text
 
 bullet lead-in text:
 * bullet 1
-* bullet 2
 * bullet 3
 
 change of text 
-
+another add 
 
 ### Sub2
 
