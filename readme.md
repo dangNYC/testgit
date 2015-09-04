@@ -4,7 +4,7 @@
 
 > _[link to site or demo app](http://www.dlgsoftware.com)_
 
-This proejct is just a playpen, getting comfortable with the github Windows desktop GUI 
+This project is just a playpen, getting comfortable with the github Windows desktop GUI 
 
 ###Sub1  
 
